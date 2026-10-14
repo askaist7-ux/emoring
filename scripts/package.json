@@ -1,0 +1,9 @@
+{
+  "name": "emoring-admin-scripts",
+  "private": true,
+  "type": "module",
+  "description": "EmoRing 서버 전용 관리 스크립트 (웹에 배포하지 않음)",
+  "dependencies": {
+    "firebase-admin": "^12.7.0"
+  }
+}
