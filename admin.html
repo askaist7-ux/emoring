@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>관리자 대시보드 | EmoRing</title>
+  <link rel="icon" href="images/logo.png">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body class="adm-body">
+  <!-- 권한 확인 전·권한 없음 화면 -->
+  <div id="gate" class="gate" role="status" aria-live="polite">
+    <div class="gate__card">
+      <img src="images/logo.png" alt="EmoRing" class="gate__logo">
+      <p>관리자 권한을 확인하고 있어요…</p>
+    </div>
+  </div>
+
+  <div class="adm" id="adm" hidden>
+    <aside class="adm-side" id="adm-side" aria-label="관리자 메뉴">
+      <a href="#dashboard" class="adm-side__logo"><img src="images/logo.png" alt="EmoRing"><span>관리자</span></a>
+      <nav><ul class="adm-nav" id="adm-nav"></ul></nav>
+      <a class="adm-side__back" href="index.html">← 사이트로 돌아가기</a>
+    </aside>
+    <div class="adm-side-bg" id="adm-side-bg" hidden></div>
+
+    <div class="adm-main">
+      <header class="adm-top">
+        <button type="button" class="icon-btn adm-menu" id="adm-menu" aria-label="관리자 메뉴 열기" aria-expanded="false" aria-controls="adm-side">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </button>
+        <h1 class="adm-top__title" id="adm-title">대시보드</h1>
+        <span class="badge badge--warn" title="Firebase 개발 프로젝트 emoring-dev">개발 환경</span>
+        <div class="adm-top__right">
+          <div class="seg" role="group" aria-label="집계 기간" id="period">
+            <button type="button" data-days="7" aria-pressed="false">7일</button>
+            <button type="button" data-days="30" aria-pressed="true">30일</button>
+            <button type="button" data-days="90" aria-pressed="false">90일</button>
+          </div>
+          <button type="button" class="adm-refresh" id="refresh" aria-label="새로고침">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12a8 8 0 1 1-2.3-5.6M20 4v5h-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span id="updated">-</span>
+          </button>
+          <div class="adm-user" id="adm-user"></div>
+        </div>
+      </header>
+
+      <p class="demo-banner" role="note">
+        <strong>개발 환경 (emoring-dev)</strong> 회원·작품·게시글은 Firebase에 저장된 실제 데이터입니다. <strong>주문·매출은 [데모] 표시가 붙은 시안용 데이터</strong>로, 결제 연동 전에는 실제 매출이 아닙니다.
+      </p>
+
+      <main id="adm-view" class="adm-view" tabindex="-1"></main>
+    </div>
+  </div>
+
+  <dialog id="modal" class="modal" aria-labelledby="modal-title">
+    <form method="dialog" class="modal__inner" id="modal-form" novalidate>
+      <div class="modal__head">
+        <h2 id="modal-title" class="modal__title"></h2>
+        <button type="button" class="icon-btn" data-modal-close aria-label="닫기"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+      </div>
+      <div class="modal__body" id="modal-body"></div>
+      <p class="form-error" role="alert" id="modal-error"></p>
+      <div class="modal__foot">
+        <button type="button" class="btn btn--ghost btn--sm" data-modal-close>취소</button>
+        <button type="submit" class="btn btn--primary btn--sm" id="modal-ok">저장</button>
+      </div>
+    </form>
+  </dialog>
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
+  <script src="js/firebase-config.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>

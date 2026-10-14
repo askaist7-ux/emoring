@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>로그인 | EmoRing</title>
+  <link rel="icon" href="images/logo.png">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="auth">
+  <div id="site-header"></div>
+
+  <main id="main" class="auth">
+    <div class="auth__card">
+      <div class="auth__side" aria-hidden="true">
+        <div class="auth__sun" id="auth-sun"></div>
+        <p class="auth__side-text">다시 만나서 반가워요!</p>
+      </div>
+      <div class="auth__form-wrap">
+        <h1 class="auth__title">로그인</h1>
+        <p class="auth__lead">써니와 팬들이 기다리고 있어요.</p>
+        <form id="login-form" novalidate>
+          <div class="field">
+            <label for="email">이메일</label>
+            <input id="email" name="email" type="email" autocomplete="email" required>
+          </div>
+          <div class="field">
+            <label for="password">비밀번호</label>
+            <div class="pw">
+              <input id="password" name="password" type="password" autocomplete="current-password" required>
+              <button type="button" class="pw__toggle" aria-pressed="false" aria-controls="password">보기</button>
+            </div>
+          </div>
+          <label class="check"><input type="checkbox" id="remember"> 로그인 상태 유지</label>
+          <p class="form-error" role="alert" id="login-error"></p>
+          <button type="submit" class="btn btn--primary btn--block">로그인</button>
+        </form>
+        <p class="auth__switch">아직 회원이 아니신가요? <a href="signup.html">회원가입</a></p>
+
+        <details class="demo-box">
+          <summary>관리자 계정은 어떻게 만드나요?</summary>
+          <p>먼저 일반 회원으로 가입한 뒤, 운영자가 서버 스크립트(<code>scripts/set-admin.mjs</code>)로 관리자 역할을 부여해야 합니다. 화면에서 스스로 관리자가 될 수는 없습니다.</p>
+        </details>
+      </div>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
+  <script src="js/firebase-config.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/auth.js"></script>
+</body>
+</html>

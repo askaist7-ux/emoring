@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>회원가입 | EmoRing</title>
+  <link rel="icon" href="images/logo.png">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="auth">
+  <div id="site-header"></div>
+
+  <main id="main" class="auth">
+    <div class="auth__card">
+      <div class="auth__side" aria-hidden="true">
+        <div class="auth__sun" id="auth-sun"></div>
+        <p class="auth__side-text">EmoRing에 오신 걸 환영해요!</p>
+      </div>
+      <div class="auth__form-wrap">
+        <h1 class="auth__title">회원가입</h1>
+        <p class="auth__lead">가입하면 팬 라운지에 글과 댓글을 남길 수 있어요.</p>
+        <form id="signup-form" novalidate>
+          <div class="field">
+            <label for="name">이름</label>
+            <input id="name" name="name" autocomplete="name" required>
+          </div>
+          <div class="field">
+            <label for="nickname">닉네임 <span class="muted-text">(팬 라운지에 표시돼요)</span></label>
+            <input id="nickname" name="nickname" autocomplete="nickname" minlength="2" maxlength="16" required>
+          </div>
+          <div class="field">
+            <label for="email">이메일</label>
+            <input id="email" name="email" type="email" autocomplete="email" required>
+          </div>
+          <div class="field">
+            <label for="password">비밀번호</label>
+            <div class="pw">
+              <input id="password" name="password" type="password" autocomplete="new-password" aria-describedby="pw-rules" required>
+              <button type="button" class="pw__toggle" aria-pressed="false" aria-controls="password">보기</button>
+            </div>
+            <ul class="pw-rules" id="pw-rules">
+              <li data-rule="8자 이상">8자 이상</li>
+              <li data-rule="영문 포함">영문 포함</li>
+              <li data-rule="숫자 포함">숫자 포함</li>
+            </ul>
+          </div>
+          <div class="field">
+            <label for="password2">비밀번호 확인</label>
+            <input id="password2" name="password2" type="password" autocomplete="new-password" required>
+          </div>
+
+          <fieldset class="agree">
+            <legend class="sr-only">약관 동의</legend>
+            <label class="check check--all"><input type="checkbox" id="agree-all"> 전체 동의</label>
+            <label class="check"><input type="checkbox" class="agree-item" id="agree-terms" required> [필수] 이용약관 동의 <a href="page.html?p=policy&doc=terms" target="_blank" rel="noopener">보기<span class="sr-only"> (새 창)</span></a></label>
+            <label class="check"><input type="checkbox" class="agree-item" id="agree-privacy" required> [필수] 개인정보 수집·이용 동의 <a href="page.html?p=policy&doc=privacy" target="_blank" rel="noopener">보기<span class="sr-only"> (새 창)</span></a></label>
+            <label class="check"><input type="checkbox" class="agree-item" id="agree-marketing"> [선택] 신작·굿즈 소식 받기</label>
+          </fieldset>
+
+          <p class="form-error" role="alert" id="signup-error"></p>
+          <button type="submit" class="btn btn--primary btn--block">가입하기</button>
+        </form>
+        <p class="auth__switch">이미 회원이신가요? <a href="login.html">로그인</a></p>
+      </div>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
+  <script src="js/firebase-config.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/auth.js"></script>
+</body>
+</html>
